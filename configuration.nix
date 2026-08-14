@@ -142,7 +142,6 @@
     enable = true;
     settings = {
       default_session = {
-        # Берем пакет прямо из инпута noctalia-greeter
         command = "${inputs.noctalia-greeter.packages.${pkgs.system}.default}/bin/noctalia-greeter";
     user = "greeter";
        };
