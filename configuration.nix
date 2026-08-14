@@ -183,7 +183,7 @@
     krita
     lxqt.lximage-qt
     strawberry
-    pavucontrol-qt
+    lxqt.pavucontrol-qt
     haruna
     obs-studio
     sioyek
