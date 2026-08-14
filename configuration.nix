@@ -177,7 +177,7 @@
     dxvk
     vkd3d
     gamemode
-    nheko
+    telegram-desktop
     coolreader
     featherpad
     krita
@@ -188,7 +188,7 @@
     obs-studio
     sioyek
     lxqt.qterminal
-    falkon
+    kdePackages.falkon
     pcmanfm-qt
     lxqt.lxqt-archiver
     pciutils
