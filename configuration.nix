@@ -166,7 +166,7 @@
     inputs.noctalia.packages.${pkgs.system}.default
     labwc
     xwayland
-    qt5ct
+    libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qt6ct
     kdePackages.kvantum
