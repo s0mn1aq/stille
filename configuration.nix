@@ -169,7 +169,8 @@
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qt6ct
-    kdePackages.kvantum
+    kdePackages.qtstyleplugin-kvantum
+    libsForQt5.qtstyleplugin-kvantum
     lxqt.lxqt-policykit
     doas-sudo-shim
     wineWowPackages.waylandFull
