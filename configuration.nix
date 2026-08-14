@@ -178,7 +178,7 @@
     dxvk
     vkd3d
     gamemode
-    portproton
+    port-proton
     nheko
     coolreader
     featherpad
