@@ -200,6 +200,7 @@
   #|-----|
   #| nix |
   #|-----|
+  nixpkgs.config.allowUnfree = true;
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
@@ -207,7 +208,6 @@
       max-jobs = "auto";
       cores = 0;
     };
-    nixpkgs.config.allowUnfree = true;
     gc = {
       automatic = true;
       dates = "weekly";
