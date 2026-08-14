@@ -211,6 +211,7 @@
       auto-optimise-store = true;
       max-jobs = "auto";
       cores = 0;
+  nixpkgs.config.allowUnfree = true;
     };
     gc = {
       automatic = true;
