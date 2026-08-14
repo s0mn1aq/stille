@@ -139,12 +139,13 @@
 #| software |
 #|----------|
     services.greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${inputs.noctalia.packages.${pkgs.system}.greeter}/bin/noctalia-greeter";
-          user = "greeter";
-        };
+    enable = true;
+    settings = {
+      default_session = {
+        # Берем пакет прямо из инпута noctalia-greeter
+        command = "${inputs.noctalia-greeter.packages.${pkgs.system}.default}/bin/noctalia-greeter";
+    user = "greeter";
+       };
       };
     };
     users.users.greeter = {
