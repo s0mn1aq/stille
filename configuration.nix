@@ -163,22 +163,20 @@
     QT_STYLE_OVERRIDE = "kvantum";
   };
   environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${pkgs.system}.default
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     labwc
     xwayland
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qt6ct
     kdePackages.qtstyleplugin-kvantum
-    libsForQt5.qtstyleplugin-kvantum
     lxqt.lxqt-policykit
     doas-sudo-shim
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
     winetricks
     dxvk
     vkd3d
     gamemode
-    port-proton
     nheko
     coolreader
     featherpad
