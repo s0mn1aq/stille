@@ -69,13 +69,8 @@
       allowedUDPPorts = [];
     };
   };
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
-  services.zerotierone = {
-    enable = true;
-  };
+  services.mullvad-vpn.enable = true;
+  services.zerotierone.enable = true;
 
   #|--------|
   #| locale |
