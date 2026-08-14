@@ -187,7 +187,7 @@
     haruna
     obs-studio
     sioyek
-    qterminal
+    lxqt.qterminal
     falkon
     pcmanfm-qt
     lxqt.lxqt-archiver
