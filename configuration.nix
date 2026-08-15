@@ -190,6 +190,7 @@
     lxqt.qterminal
     kdePackages.falkon
     pcmanfm-qt
+    qbittorrent
     lxqt.lxqt-archiver
     pciutils
     usbutils
