@@ -201,7 +201,18 @@
   #|--------|
   #| script |
   #|--------|
-  
+  programs.bash.interactiveShellInit = ''
+    tg-pack() {
+        set -o pipefail
+        tar -cf - "$1" | age -p -o - | split -b 2G - "$1.tar.age.part_" && \
+        par2 c -r10 "$1.par2" "$1.tar.age.part_"*
+    }
+
+    tg-unpack() {
+        par2 r "$1.par2" && \
+        cat "$1.tar.age.part_"* | age -d | tar -xf -
+    }
+  '';
 
   #|-----|
   #| nix |
