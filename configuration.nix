@@ -190,12 +190,18 @@
     lxqt.qterminal
     kdePackages.falkon
     pcmanfm-qt
+    par2cmdline-turbo
     qbittorrent
-    lxqt.lxqt-archiver
     pciutils
     usbutils
+    age
     git
   ];
+
+  #|--------|
+  #| script |
+  #|--------|
+  
 
   #|-----|
   #| nix |
