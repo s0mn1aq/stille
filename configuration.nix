@@ -202,25 +202,32 @@
   #| script |
   #|--------|
   programs.bash.interactiveShellInit = ''
-  tg-pack() {
-    set -o pipefail
-    [ -n "$1" ] || return 1
-    local s="''${1%/}" p="''${1%/}.tar.age.part"
-    tar -cf - "$s" | age -p -o - | split -b 2G -d --numeric-suffixes=1 -a 2 - "$p" || return 1
-    local a=("$p"*)
-    [ ''${#a[@]} -le 9 ] && for f in "''${a[@]}"; do [ -f "$f" ] && mv "$f" "''${f%part0*}part''${f##*part0}"; done
-    par2 c -r10 -n1 "$s.par2" "$p"*
-  }
-  tg-unpack() {
-    [ -n "$1" ] || return 1
-    local b="''${1%/}"
-    b="''${b%.par2}"
-    b="''${b%.tar.age.part*}"
-    par2 r "$b.par2" && cat "$b.tar.age.part"* | age -d | tar -xf -
-  }
-  complete -d tg-pack
-  complete -f -d tg-unpack
-'';
+   tg-pack() {
+     [ -n "$1" ] || return 1
+     local s="''${1%/}" p="''${1%/}.tar.age.part"
+     ( set -o pipefail; tar -cf - "$s" | age -p -o - | split -b 1920MB -d --numeric-suffixes=1 -a 2 - "$p" ) || return 1
+     local a=("$p"*)
+     if [ ''${#a[@]} -le 9 ]; then
+       for f in "''${a[@]}"; do [ -f "$f" ] && mv "$f" "''${f%part0*}part''${f##*part0}"; done
+       a=("$p"*)
+     fi
+     local b=0
+     for f in "''${a[@]}"; do b=$((b + $(stat -c%s "$f"))); done
+     local k=$(( (b / 10 + 1919999999) / 1920000000 ))
+     [ "$k" -lt 1 ] && k=1
+     par2 c -r10 -n"$k" "$s.par2" "''${a[@]}"
+   }
+   tg-unpack() {
+     [ -n "$1" ] || return 1
+     local b="''${1%/}"
+     b="''${b%.par2}"
+     b="''${b%.tar.age.part*}"
+     ls "$b.tar.age.part"* >/dev/null 2>&1 || return 1
+     par2 r "$b.par2" && cat "$b.tar.age.part"* | age -d | tar -xf -
+   }
+   complete -d tg-pack
+   complete -f -d tg-unpack
+  '';
 
   #|-----|
   #| nix |
