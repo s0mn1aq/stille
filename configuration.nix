@@ -202,17 +202,25 @@
   #| script |
   #|--------|
   programs.bash.interactiveShellInit = ''
-    tg-pack() {
-        set -o pipefail
-        tar -cf - "$1" | age -p -o - | split -b 2G - "$1.tar.age.part_" && \
-        par2 c -r10 "$1.par2" "$1.tar.age.part_"*
-    }
-
-    tg-unpack() {
-        par2 r "$1.par2" && \
-        cat "$1.tar.age.part_"* | age -d | tar -xf -
-    }
-  '';
+  tg-pack() {
+    set -o pipefail
+    [ -n "$1" ] || return 1
+    local s="''${1%/}" p="''${1%/}.tar.age.part"
+    tar -cf - "$s" | age -p -o - | split -b 2G -d --numeric-suffixes=1 -a 2 - "$p" || return 1
+    local a=("$p"*)
+    [ ''${#a[@]} -le 9 ] && for f in "''${a[@]}"; do [ -f "$f" ] && mv "$f" "''${f%part0*}part''${f##*part0}"; done
+    par2 c -r10 -n1 "$s.par2" "$p"*
+  }
+  tg-unpack() {
+    [ -n "$1" ] || return 1
+    local b="''${1%/}"
+    b="''${b%.par2}"
+    b="''${b%.tar.age.part*}"
+    par2 r "$b.par2" && cat "$b.tar.age.part"* | age -d | tar -xf -
+  }
+  complete -d tg-pack
+  complete -f -d tg-unpack
+'';
 
   #|-----|
   #| nix |
