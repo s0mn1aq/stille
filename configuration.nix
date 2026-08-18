@@ -95,7 +95,7 @@
     doas = {
       enable = true;
       extraRules = [{
-        users = [ "somniaq" ];
+        users = [ "stummer" ];
         keepEnv = true;
         persist = true;
       }];
@@ -106,9 +106,9 @@
   #|----------------|
   #| identification |
   #|----------------|
-  users.users.somniaq = {
+  users.users.stummer = {
     isNormalUser = true;
-    description = "heartless";
+    description = "der stumme";
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
     hashedPassword = "$y$j9T$MxvfAZ4B1nH2CNazLHi6q1$KGv.NOmIDCOKzdDUb9bfNe7ZvXzIcxX/tT8nR3V5Jg/";
   };
@@ -147,13 +147,30 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.somniaq = { pkgs, ... }: {
+    users.somniaq = { config, pkgs, ... }: {
       home.stateVersion = "26.05";
+      
+      xdg.userDirs = {
+        enable = true;
+        createDirectories = true;
+        download = "${config.home.homeDirectory}/download";
+        documents = "${config.home.homeDirectory}/document";
+        pictures = "${config.home.homeDirectory}/picture";
+        videos = "${config.home.homeDirectory}/video";
+        music = "${config.home.homeDirectory}/audio";
+      };
+      
+      systemd.user.tmpfiles.rules = [
+        "d %h/model 0755 - - -"
+        "d %h/misc 0755 - - -"
+      ];
+
       wayland.windowManager.sway = {
         enable = true;
         package = pkgs.swayfx;
         extraOptions = [ "--unsupported-gpu" ];
       };
+      
       programs = {
         # graphic shell
         fuzzel.enable = true;
@@ -178,12 +195,14 @@
         btop.enable = true;
         fastfetch.enable = true;
       };
+      
       services = {
         mullvad-vpn.enable = true;
         zerotierone.enable = true;
         mako.enable = true;
         swayidle.enable = true;
       };
+      
       home.packages = with pkgs; [
         # graphic shell
         swaybg
@@ -217,9 +236,9 @@
   #| customization |
   #|---------------|
   stylix = {
-  enable = true;
-  image = ./wallpaper.jpg;
-  polarity = "dark";
+    enable = true;
+    image = ./wallpaper.jpg;
+    polarity = "dark";
     base16Scheme = {
       base00 = "11262c";
       base01 = "183038";
@@ -237,34 +256,22 @@
       base0D = "588e9e";
       base0E = "aa7382";
       base0F = "be8695";
-    stylix.fonts = {
+    };
+    fonts = {
       monospace = {
         package = pkgs.ibm-plex;
         name = "IBM Plex Mono";
       };
-    sansSerif = {
-      package = pkgs.ibm-plex;
+      sansSerif = {
+        package = pkgs.ibm-plex;
         name = "IBM Plex Sans";
       };
-    serif = {
-      package = pkgs.ibm-plex;
+      serif = {
+        package = pkgs.ibm-plex;
         name = "IBM Plex Serif";
       };
     };
   };
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-    download = "${config.home.homeDirectory}/download";
-    documents = "${config.home.homeDirectory}/document";
-    pictures = "${config.home.homeDirectory}/picture";
-    videos = "${config.home.homeDirectory}/video";
-    music = "${config.home.homeDirectory}/audio";
-  };
-  systemd.user.tmpfiles.rules = [
-    "d %h/model 0755 - - -"
-    "d %h/misc 0755 - - -"
-  ];
 
   #|--------|
   #| script |
