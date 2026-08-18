@@ -76,8 +76,6 @@
       allowedUDPPorts = [];
     };
   };
-  services.mullvad-vpn.enable = true;
-  services.zerotierone.enable = true;
 
   #|--------|
   #| locale |
@@ -110,9 +108,9 @@
   #|----------------|
   users.users.somniaq = {
     isNormalUser = true;
-    description = "queen of the meadow";
+    description = "king";
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
-    hashedPassword = "$y$j9T$OfVv5WBZ9ASk2.38kGt7l/$NGUAMpBq3OApTt9XUz5qru63aqb2xIybBNLe6VL3iE6";
+    hashedPassword = "$y$j9T$MxvfAZ4B1nH2CNazLHi6q1$KGv.NOmIDCOKzdDUb9bfNe7ZvXzIcxX/tT8nR3V5Jg/";
   };
 
   #|-------|
@@ -137,9 +135,15 @@
     };
   };
 
-  #|--------------|
-  #| home manager |
-  #|--------------|
+  #|----------|
+  #| software |
+  #|----------|
+  programs.dconf.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = [ "gtk" ];
+  };
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -175,6 +179,8 @@
         fastfetch.enable = true;
       };
       services = {
+        mullvad-vpn.enable = true;
+        zerotierone.enable = true;
         mako.enable = true;
         swayidle.enable = true;
       };
