@@ -1,31 +1,20 @@
 {
-  description = "queen of the meadow";
+  description = "field";
 
-  #|-------|
-  #| input |
-  #|-------|
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    noctalia-greeter = {
-      url = "github:noctalia-dev/noctalia-greeter";
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  #|--------|
-  #| output |
-  #|--------|
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.field = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
+        home-manager.nixosModules.home-manager
         ./configuration.nix
       ];
     };
