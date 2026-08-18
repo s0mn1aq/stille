@@ -193,9 +193,7 @@
         # application
         _64gram-desktop
         zen-browser
-        mpd
         rqbit
-        rmpc
         mupdf
         # utility
         playerctl
