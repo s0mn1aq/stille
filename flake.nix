@@ -16,7 +16,7 @@
   #| output |
   #|--------|
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations.field = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.stille = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
