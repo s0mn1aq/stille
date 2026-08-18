@@ -151,7 +151,6 @@
     useUserPackages = true;
     users.stummer = { config, pkgs, ... }: {
       home.stateVersion = "26.05";
-      
       xdg.userDirs = {
         enable = true;
         createDirectories = true;
@@ -161,18 +160,15 @@
         videos = "${config.home.homeDirectory}/video";
         music = "${config.home.homeDirectory}/audio";
       };
-      
       systemd.user.tmpfiles.rules = [
         "d %h/model 0755 - - -"
         "d %h/misc 0755 - - -"
       ];
-
       wayland.windowManager.sway = {
         enable = true;
         package = pkgs.swayfx;
         extraOptions = [ "--unsupported-gpu" ];
       };
-      
       programs = {
         # graphic shell
         fuzzel.enable = true;
@@ -197,12 +193,10 @@
         btop.enable = true;
         fastfetch.enable = true;
       };
-      
       services = {
         mako.enable = true;
         swayidle.enable = true;
       };
-      
       home.packages = with pkgs; [
         # graphic shell
         swaybg
