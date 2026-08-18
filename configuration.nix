@@ -76,6 +76,8 @@
       allowedUDPPorts = [];
     };
   };
+  services.mullvad-vpn.enable = true;
+  services.zerotierone.enable = true;
 
   #|--------|
   #| locale |
@@ -147,7 +149,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.somniaq = { config, pkgs, ... }: {
+    users.stummer = { config, pkgs, ... }: {
       home.stateVersion = "26.05";
       
       xdg.userDirs = {
@@ -197,8 +199,6 @@
       };
       
       services = {
-        mullvad-vpn.enable = true;
-        zerotierone.enable = true;
         mako.enable = true;
         swayidle.enable = true;
       };
