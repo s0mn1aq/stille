@@ -68,7 +68,7 @@
   #| network |
   #|---------|
   networking = {
-    hostName = "field";
+    hostName = "stille";
     networkmanager.enable = true;
     firewall = {
       enable = true;
@@ -108,7 +108,7 @@
   #|----------------|
   users.users.somniaq = {
     isNormalUser = true;
-    description = "king";
+    description = "heartless";
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
     hashedPassword = "$y$j9T$MxvfAZ4B1nH2CNazLHi6q1$KGv.NOmIDCOKzdDUb9bfNe7ZvXzIcxX/tT8nR3V5Jg/";
   };
@@ -186,7 +186,6 @@
       };
       home.packages = with pkgs; [
         # graphic shell
-        yambar
         swaybg
         grim
         slurp
@@ -213,6 +212,59 @@
       ];
     };
   };
+
+  #|---------------|
+  #| customization |
+  #|---------------|
+  stylix = {
+  enable = true;
+  image = ./wallpaper.jpg;
+  polarity = "dark";
+    base16Scheme = {
+      base00 = "11262c";
+      base01 = "183038";
+      base02 = "1e3a43";
+      base03 = "23434c";
+      base04 = "487b8c";
+      base05 = "a8bcba";
+      base06 = "cde2e0";
+      base07 = "cde2e0";
+      base08 = "d06058";
+      base09 = "e28c80";
+      base0A = "f09a8e";
+      base0B = "5e8c80";
+      base0C = "6ca4a2";
+      base0D = "588e9e";
+      base0E = "aa7382";
+      base0F = "be8695";
+    stylix.fonts = {
+      monospace = {
+        package = pkgs.ibm-plex;
+        name = "IBM Plex Mono";
+      };
+    sansSerif = {
+      package = pkgs.ibm-plex;
+        name = "IBM Plex Sans";
+      };
+    serif = {
+      package = pkgs.ibm-plex;
+        name = "IBM Plex Serif";
+      };
+    };
+  };
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    download = "${config.home.homeDirectory}/download";
+    documents = "${config.home.homeDirectory}/document";
+    pictures = "${config.home.homeDirectory}/picture";
+    videos = "${config.home.homeDirectory}/video";
+    music = "${config.home.homeDirectory}/audio";
+  };
+  systemd.user.tmpfiles.rules = [
+    "d %h/model 0755 - - -"
+    "d %h/misc 0755 - - -"
+  ];
 
   #|--------|
   #| script |
