@@ -1,6 +1,9 @@
 {
   description = "field";
 
+  #|-------|
+  #| input |
+  #|-------|
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -9,6 +12,9 @@
     };
   };
 
+  #|--------|
+  #| output |
+  #|--------|
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.field = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
