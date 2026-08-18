@@ -136,66 +136,66 @@
   #|----------|
   #| software |
   #|----------|
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${inputs.noctalia-greeter.packages.${pkgs.system}.default}/bin/noctalia-greeter";
-        user = "greeter";
-      };
-    };
+  wayland.windowManager.sway = {
+  enable = true;
+  package = pkgs.swayfx;
+  programs = {
+    # graphic shell
+    fuzzel.enable = true;
+    yambar.enable = true;
+    swaylock.enable = true;
+    # application
+    mpv.enable = true;
+    imv.enable = true;
+    # utility
+    alacritty.enable = true;
+    nushell.enable = true;
+    zellij.enable = true;
+    helix.enable = true;
+    yazi.enable = true;
+    eza.enable = true;
+    bat.enable = true;
+    zoxide.enable = true;
+    git.enable = true;
+    gitui.enable = true;
+    skim.enable = true;
+    fd.enable = true;
+    ripgrep.enable = true;
+    btop.enable = true;
+    fastfetch.enable = true;
   };
-  users.users.greeter = {
-    isSystemUser = true;
-    group = "greeter";
+  services = {
+    mako.enable = true;
+    swayidle.enable = true;
   };
-  users.groups.greeter = {};
-
-  qt = {
-    enable = true;
-    platformTheme = "qt5ct";
-    style = "kvantum";
   };
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "nvidia";
-    XDG_SESSION_TYPE = "wayland";
-    NIXOS_OZONE_WL = "1";
-    QT_STYLE_OVERRIDE = "kvantum";
-  };
-  environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    labwc
-    xwayland
-    libsForQt5.qt5ct
-    libsForQt5.qtstyleplugin-kvantum
-    kdePackages.qt6ct
-    kdePackages.qtstyleplugin-kvantum
-    lxqt.lxqt-policykit
-    doas-sudo-shim
-    wineWow64Packages.waylandFull
-    winetricks
-    dxvk
-    vkd3d
-    gamemode
-    telegram-desktop
-    coolreader
-    featherpad
-    krita
-    lxqt.lximage-qt
-    strawberry
-    lxqt.pavucontrol-qt
-    haruna
-    obs-studio
-    sioyek
-    lxqt.qterminal
-    kdePackages.falkon
-    pcmanfm-qt
-    par2cmdline-turbo
-    qbittorrent
+  home.packages = with pkgs; [
+    # graphic shell
+    swaybg
+    grim
+    slurp
+    # application
+    _64gram-desktop
+    zen-browser
+    mpd
+    rqbit
+    rmpc
+    mupdf
+    # utility
+    playerctl
+    brightnessctl
     pciutils
     usbutils
-    age
-    git
+    ouch
+    par2cmdline-turbo
+    rage
+    ffmpeg
+    cpufetch
+    gpufetch
+    onefetch
+    doas-sudo-shim
+    wl-clipboard
+    wlr-randr
   ];
 
   #|--------|
