@@ -155,7 +155,6 @@
     useUserPackages = true;
     users.stummer = { config, pkgs, ... }: {
       home.stateVersion = "26.05";
-      gtk.enable = true;
       xdg.userDirs = {
         enable = true;
         createDirectories = true;
@@ -182,7 +181,7 @@
           </core>
           <theme>
             <name>Deepwoken</name>
-            <cornerRadius>2</cornerRadius>
+            <cornerRadius>4</cornerRadius>
             <keepBorder>yes</keepBorder>
             <dropShadows>yes</dropShadows>
             <dropShadowsOnTiled>no</dropShadowsOnTiled>
@@ -247,34 +246,50 @@
         executable = true;
       };
       xdg.dataFile."themes/Deepwoken/openbox-3/themerc".text = ''
-        window.active.border.color: #519389
-        window.active.title.bg.color: #1b292a
-        window.active.label.text.color: #d5c7ad
-        window.active.button.unpressed.image.color: #d5c7ad
-        window.active.shadow.color: #1b292aC0
-        window.inactive.border.color: #223638
-        window.inactive.title.bg.color: #1b292a
-        window.inactive.label.text.color: #506568
-        window.inactive.button.unpressed.image.color: #506568
-        window.inactive.shadow.color: #1b292a80
-        border.width: 3
+        window.active.border.color: #c8ba9e
+        window.active.title.bg.color: #141f20
+        window.active.label.text.color: #c8ba9e
+        window.active.button.unpressed.image.color: #c8ba9e
+        window.active.shadow.color: #141f20C0
+        window.inactive.border.color: #26393b
+        window.inactive.title.bg.color: #141f20
+        window.inactive.label.text.color: #455a5c
+        window.inactive.button.unpressed.image.color: #455a5c
+        window.inactive.shadow.color: #141f2080
+        border.width: 2
         padding.width: 5
         padding.height: 4
-        window.handle.width: 3
-        menu.items.bg.color: #1b292a
-        menu.items.text.color: #d5c7ad
-        menu.items.active.bg.color: #2d4649
-        menu.items.active.text.color: #f2e8d3
-        menu.title.bg.color: #223638
-        menu.title.text.color: #d5c7ad
-        menu.border.color: #519389
+        window.handle.width: 2
+        menu.items.bg.color: #141f20
+        menu.items.text.color: #c8ba9e
+        menu.items.active.bg.color: #26393b
+        menu.items.active.text.color: #e3d7bf
+        menu.title.bg.color: #1b292a
+        menu.title.text.color: #c8ba9e
+        menu.border.color: #c8ba9e
         menu.border.width: 2
-        osd.bg.color: #1b292a
-        osd.border.color: #519389
-        osd.label.text.color: #d5c7ad
+        osd.bg.color: #141f20
+        osd.border.color: #c8ba9e
+        osd.label.text.color: #c8ba9e
       '';
       programs = {
-        fuzzel.enable = true;
+        fuzzel = {
+          enable = true;
+          settings = {
+            main = {
+              font = "EB Garamond:size=14";
+              width = 40;
+              lines = 10;
+              horizontal-pad = 24;
+              vertical-pad = 14;
+              inner-pad = 10;
+            };
+            border = {
+              width = 2;
+              radius = 4;
+            };
+          };
+        };
         swaylock.enable = true;
         mpv.enable = true;
         imv.enable = true;
@@ -341,23 +356,27 @@
   };
   stylix = {
     enable = true;
+    targets = {
+      gtk.enable = false;
+      qt.enable = false;
+    };
     base16Scheme = {
-      base00 = "1b292a";
-      base01 = "223638";
-      base02 = "2d4649";
-      base03 = "506568";
-      base04 = "887a68";
-      base05 = "d5c7ad";
-      base06 = "e6d9bf";
-      base07 = "f2e8d3";
-      base08 = "c85d43";
-      base09 = "d9824c";
-      base0A = "d4b375";
-      base0B = "519389";
-      base0C = "72b2a8";
-      base0D = "80a8b0";
-      base0E = "a84f68";
-      base0F = "8d588a";
+      base00 = "141f20";
+      base01 = "1b292a";
+      base02 = "26393b";
+      base03 = "455a5c";
+      base04 = "786a59";
+      base05 = "c8ba9e";
+      base06 = "dcd0b6";
+      base07 = "e3d7bf";
+      base08 = "b54f38";
+      base09 = "c4743d";
+      base0A = "c2a265";
+      base0B = "437c74";
+      base0C = "5f9e95";
+      base0D = "6d939c";
+      base0E = "944258";
+      base0F = "7a4a77";
     };
     cursor = {
       package = pkgs.phinger-cursors;
