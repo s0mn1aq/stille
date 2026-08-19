@@ -115,7 +115,7 @@
     isNormalUser = true;
     description = "der stumme";
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
-    hashedPassword = "$y$j9T$MxvfAZ4B1nH2CNazLHi6q1$KGv.NOmIDCOKzdDUb9bfNe7ZvXzIcxX/tT8nR3V5Jg/";
+    initialPassword = "...";
   };
 
   #|-------|
