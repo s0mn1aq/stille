@@ -312,7 +312,6 @@
         _64gram
         librewolf
         rqbit
-        mupdf
         playerctl
         brightnessctl
         pciutils
