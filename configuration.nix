@@ -170,6 +170,7 @@
       wayland.windowManager.sway = {
         enable = true;
         package = pkgs.swayfx;
+        checkConfig = false;
         extraOptions = [ "--unsupported-gpu" ];
         extraConfig = ''
           corner_radius 4
