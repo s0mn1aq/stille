@@ -49,7 +49,7 @@ fi
 git config user.name "installer"
 git config user.email "installer@field"
 git add -A
-nixos-install --flake /mnt/etc/nixos#field --no-root-passwd
+nixos-install --flake /mnt/etc/nixos#stille --no-root-passwd
 sync
 read -rp "reboot? (y/n): " REBOOT </dev/tty
 if [[ "$REBOOT" == [yY] ]]; then
