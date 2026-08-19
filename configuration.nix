@@ -150,6 +150,7 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config.common.default = [ "gtk" ];
   };
+
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -332,6 +333,20 @@
   #|---------------|
   #| customization |
   #|---------------|
+  fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = [ "EB Garamond" ];
+        sansSerif = [ "EB Garamond" ];
+        monospace = [ "Courier Prime" ];
+      };
+    };
+    packages = with pkgs; [
+      eb-garamond
+      courier-prime
+    ];
+  };
   stylix = {
     enable = true;
     base16Scheme = {
@@ -356,20 +371,6 @@
       package = pkgs.phinger-cursors;
       name = "phinger-cursors-dark";
       size = 24;
-    };
-    fonts = {
-      fontconfig = {
-        enable = true;
-        defaultFonts = {
-          serif = [ "EB Garamond" ];
-          sansSerif = [ "EB Garamond" ];
-          monospace = [ "Courier Prime" ];
-        };
-      };
-      packages = with pkgs; [
-        eb-garamond
-        courier-prime
-      ];
     };
     fonts = {
       serif = {
@@ -418,9 +419,9 @@
     complete -f -d tg-unpack
   '';
 
-  #|-----|
-  #| nix |
-  #|-----|
+  #|--------------|
+  #| optimization |
+  #|--------------|
   nixpkgs.config.allowUnfree = true;
   nix = {
     settings = {
