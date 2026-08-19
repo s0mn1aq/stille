@@ -211,7 +211,7 @@
         swaybg
         grim
         slurp
-        _64gram-desktop
+        64gram-desktop
         zen-browser
         rqbit
         mupdf
