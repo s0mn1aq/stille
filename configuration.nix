@@ -44,7 +44,7 @@
     nvidia = {
       modesetting.enable = true;
       powerManagement.enable = true;
-      open = true; # Set to false if using pre-Turing (GTX 10xx or older) GPUs
+      open = true;
       nvidiaSettings = false;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
@@ -104,6 +104,9 @@
     };
     pam.services.swaylock = {};
   };
+  environment.systemPackages = with pkgs; [
+    doas-sudo-shim
+  ];
 
   #|----------------|
   #| identification |
@@ -223,7 +226,6 @@
         cpufetch
         gpufetch
         onefetch
-        doas-sudo-shim
         wl-clipboard
         wlr-randr
       ];
@@ -261,8 +263,8 @@
       name = "EB Garamond";
     };
     monospace = {
-      package = pkgs.eb-garamond;
-      name = "EB Garamond";
+      package = pkgs.courier-prime;
+      name = "Courier Prime";
     };
     sizes = {
       applications = 12;
