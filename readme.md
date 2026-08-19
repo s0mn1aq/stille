@@ -2,7 +2,7 @@
   <img src="wallpaper.png" width="100%">
 </p>
 <b align="center">
-  ## installation
+  installation
 </b>
   
 ```
