@@ -212,7 +212,7 @@
         grim
         slurp
         _64gram
-        zen-browser
+        librewolf
         rqbit
         mupdf
         playerctl
