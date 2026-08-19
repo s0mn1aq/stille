@@ -155,7 +155,7 @@
     useUserPackages = true;
     users.stummer = { config, pkgs, ... }: {
       home.stateVersion = "26.05";
-      gtk.enable = true
+      gtk.enable = true;
       xdg.userDirs = {
         enable = true;
         createDirectories = true;
