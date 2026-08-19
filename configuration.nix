@@ -177,26 +177,26 @@
         <?xml version="1.0"?>
         <labwc_config>
           <core>
-            <gap>0</gap>
+            <gap>4</gap>
             <decoration>server</decoration>
           </core>
           <theme>
             <name>Deepwoken</name>
-            <cornerRadius>4</cornerRadius>
+            <cornerRadius>2</cornerRadius>
             <keepBorder>yes</keepBorder>
             <dropShadows>yes</dropShadows>
             <dropShadowsOnTiled>no</dropShadowsOnTiled>
             <font place="ActiveWindow">
-              <name>Courier Prime</name>
-              <size>10</size>
+              <name>EB Garamond</name>
+              <size>11</size>
             </font>
             <font place="InactiveWindow">
-              <name>Courier Prime</name>
-              <size>10</size>
+              <name>EB Garamond</name>
+              <size>11</size>
             </font>
             <font place="MenuItem">
-              <name>Courier Prime</name>
-              <size>10</size>
+              <name>EB Garamond</name>
+              <size>11</size>
             </font>
           </theme>
           <focus>
@@ -247,31 +247,31 @@
         executable = true;
       };
       xdg.dataFile."themes/Deepwoken/openbox-3/themerc".text = ''
-        window.active.border.color: #3b1a23
+        window.active.border.color: #519389
         window.active.title.bg.color: #1b292a
-        window.active.label.text.color: #a69780
-        window.active.button.unpressed.image.color: #a69780
+        window.active.label.text.color: #d5c7ad
+        window.active.button.unpressed.image.color: #d5c7ad
         window.active.shadow.color: #1b292aC0
-        window.inactive.border.color: #395256
+        window.inactive.border.color: #223638
         window.inactive.title.bg.color: #1b292a
-        window.inactive.label.text.color: #2c4549
-        window.inactive.button.unpressed.image.color: #2c4549
+        window.inactive.label.text.color: #506568
+        window.inactive.button.unpressed.image.color: #506568
         window.inactive.shadow.color: #1b292a80
-        border.width: 2
-        padding.width: 4
-        padding.height: 3
-        window.handle.width: 4
+        border.width: 3
+        padding.width: 5
+        padding.height: 4
+        window.handle.width: 3
         menu.items.bg.color: #1b292a
-        menu.items.text.color: #a69780
-        menu.items.active.bg.color: #271928
-        menu.items.active.text.color: #a69780
-        menu.title.bg.color: #271928
-        menu.title.text.color: #a69780
-        menu.border.color: #395256
-        menu.border.width: 1
+        menu.items.text.color: #d5c7ad
+        menu.items.active.bg.color: #2d4649
+        menu.items.active.text.color: #f2e8d3
+        menu.title.bg.color: #223638
+        menu.title.text.color: #d5c7ad
+        menu.border.color: #519389
+        menu.border.width: 2
         osd.bg.color: #1b292a
-        osd.border.color: #395256
-        osd.label.text.color: #a69780
+        osd.border.color: #519389
+        osd.label.text.color: #d5c7ad
       '';
       programs = {
         fuzzel.enable = true;
@@ -343,21 +343,21 @@
     enable = true;
     base16Scheme = {
       base00 = "1b292a";
-      base01 = "2c4549";
-      base02 = "395256";
-      base03 = "271928";
-      base04 = "3b1a23";
-      base05 = "5e311e";
-      base06 = "a69780";
-      base07 = "363636";
-      base08 = "1b292a";
-      base09 = "2c4549";
-      base0A = "395256";
-      base0B = "271928";
-      base0C = "3b1a23";
-      base0D = "5e311e";
-      base0E = "a69780";
-      base0F = "363636";
+      base01 = "223638";
+      base02 = "2d4649";
+      base03 = "506568";
+      base04 = "887a68";
+      base05 = "d5c7ad";
+      base06 = "e6d9bf";
+      base07 = "f2e8d3";
+      base08 = "c85d43";
+      base09 = "d9824c";
+      base0A = "d4b375";
+      base0B = "519389";
+      base0C = "72b2a8";
+      base0D = "80a8b0";
+      base0E = "a84f68";
+      base0F = "8d588a";
     };
     cursor = {
       package = pkgs.phinger-cursors;
@@ -376,6 +376,12 @@
       monospace = {
         package = pkgs.courier-prime;
         name = "Courier Prime";
+      };
+      sizes = {
+        applications = 11;
+        terminal = 12;
+        desktop = 11;
+        popups = 10;
       };
     };
   };
