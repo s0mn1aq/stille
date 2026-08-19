@@ -155,13 +155,7 @@
     useUserPackages = true;
     users.stummer = { config, pkgs, ... }: {
       home.stateVersion = "26.05";
-      gtk = {
-        enable = true;
-        font = {
-          name = "EB Garamond";
-          size = 11;
-        };
-      };
+      gtk.enable = true
       xdg.userDirs = {
         enable = true;
         createDirectories = true;
