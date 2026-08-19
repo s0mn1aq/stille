@@ -150,7 +150,6 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config.common.default = [ "gtk" ];
   };
-
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -247,7 +246,7 @@
       xdg.configFile."labwc/autostart" = {
         text = ''
           #!/bin/sh
-          swaybg -c 1b292a &
+          swaybg -i /etc/nixos/wallpaper.png -m fill &
           mako &
           swayidle -w timeout 600 'swaylock -f' &
         '';
