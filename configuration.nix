@@ -140,10 +140,11 @@
     };
   };
 
-  #|----------|
-  #| software |
-  #|----------|
+  #|---------|
+  #| storage |
+  #|---------|
   programs.dconf.enable = true;
+  programs.labwc.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -167,22 +168,110 @@
         "d %h/model 0755 - - -"
         "d %h/misc 0755 - - -"
       ];
-      wayland.windowManager.sway = {
-        enable = true;
-        package = pkgs.swayfx;
-        checkConfig = false;
-        extraOptions = [ "--unsupported-gpu" ];
-        extraConfig = ''
-          corner_radius 4
-          shadows enable
-          shadows_on_csd enable
-          shadow_blur_radius 20
-          shadow_color #000000C0
-          shadow_offset 0 2
-          default_border pixel 2
-          default_floating_border pixel 2
+
+      #|----------|
+      #| software |
+      #|----------|
+      xdg.configFile."labwc/rc.xml".text = ''
+        <?xml version="1.0"?>
+        <labwc_config>
+          <core>
+            <gap>0</gap>
+            <decoration>server</decoration>
+          </core>
+          <theme>
+            <name>Deepwoken</name>
+            <cornerRadius>4</cornerRadius>
+            <keepBorder>yes</keepBorder>
+            <dropShadows>yes</dropShadows>
+            <dropShadowsOnTiled>no</dropShadowsOnTiled>
+            <font place="ActiveWindow">
+              <name>Courier Prime</name>
+              <size>10</size>
+            </font>
+            <font place="InactiveWindow">
+              <name>Courier Prime</name>
+              <size>10</size>
+            </font>
+            <font place="MenuItem">
+              <name>Courier Prime</name>
+              <size>10</size>
+            </font>
+          </theme>
+          <focus>
+            <followMouse>no</followMouse>
+            <raiseOnFocus>yes</raiseOnFocus>
+          </focus>
+          <placement>
+            <policy>automatic</policy>
+          </placement>
+          <keyboard>
+              <default />
+              <keybind key="W-c">
+                <action name="Execute" command="fuzzel" />
+              </keybind>
+              <keybind key="W-x">
+                <action name="Execute" command="alacritty" />
+              </keybind>
+              <keybind key="W-z">
+                <action name="Close" />
+              </keybind>
+            </keyboard>
+          <mouse>
+            <default />
+            <context name="Root">
+              <mousebind button="Left" action="Press">
+                <action name="None" />
+              </mousebind>
+              <mousebind button="Right" action="Press">
+                <action name="None" />
+              </mousebind>
+              <mousebind button="Middle" action="Press">
+                <action name="None" />
+              </mousebind>
+            </context>
+          </mouse>
+        </labwc_config>
+      '';
+      xdg.configFile."labwc/environment".text = ''
+        XDG_CURRENT_DESKTOP=labwc
+      '';
+      xdg.configFile."labwc/autostart" = {
+        text = ''
+          #!/bin/sh
+          swaybg -c 1b292a &
+          mako &
+          swayidle -w timeout 600 'swaylock -f' &
         '';
+        executable = true;
       };
+      xdg.dataFile."themes/Deepwoken/openbox-3/themerc".text = ''
+        window.active.border.color: #6b3244
+        window.active.title.bg.color: #1b292a
+        window.active.label.text.color: #cfc0a8
+        window.active.button.unpressed.image.color: #cfc0a8
+        window.active.shadow.color: #1b292aC0
+        window.inactive.border.color: #395256
+        window.inactive.title.bg.color: #1b292a
+        window.inactive.label.text.color: #5c7d82
+        window.inactive.button.unpressed.image.color: #5c7d82
+        window.inactive.shadow.color: #1b292a80
+        border.width: 2
+        padding.width: 4
+        padding.height: 3
+        window.handle.width: 4
+        menu.items.bg.color: #1b292a
+        menu.items.text.color: #a69780
+        menu.items.active.bg.color: #4a2c4d
+        menu.items.active.text.color: #cfc0a8
+        menu.title.bg.color: #271928
+        menu.title.text.color: #cfc0a8
+        menu.border.color: #395256
+        menu.border.width: 1
+        osd.bg.color: #1b292a
+        osd.border.color: #395256
+        osd.label.text.color: #cfc0a8
+      '';
       programs = {
         fuzzel.enable = true;
         swaylock.enable = true;
@@ -237,22 +326,22 @@
   #| customization |
   #|---------------|
   stylix.base16Scheme = {
-    base00 = "0f1722";
-    base01 = "16333c";
-    base02 = "1c4d4c";
-    base03 = "30394a";
-    base04 = "8f896b";
-    base05 = "e0dab6";
-    base06 = "eeeacc";
-    base07 = "fbf9ef";
-    base08 = "ab3a5b";
-    base09 = "d67527";
-    base0A = "d1ad38";
-    base0B = "25a397";
-    base0C = "42d6cd";
-    base0D = "4b8ba3";
-    base0E = "68308a";
-    base0F = "874618";
+    base00 = "1b292a";
+    base01 = "271928";
+    base02 = "363636";
+    base03 = "395256";
+    base04 = "5c7d82";
+    base05 = "a69780";
+    base06 = "cfc0a8";
+    base07 = "e4d9c0";
+    base08 = "6b3244";
+    base09 = "5e311e";
+    base0A = "8c5a34";
+    base0B = "4d6b48";
+    base0C = "4a6d73";
+    base0D = "2c4549";
+    base0E = "4a2c4d";
+    base0F = "3b1a23";
   };
   stylix.fonts = {
     serif = {
@@ -266,12 +355,6 @@
     monospace = {
       package = pkgs.courier-prime;
       name = "Courier Prime";
-    };
-    sizes = {
-      applications = 12;
-      terminal = 12;
-      desktop = 11;
-      popups = 11;
     };
   };
 
