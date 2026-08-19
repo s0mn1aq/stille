@@ -229,43 +229,59 @@
   #|---------------|
   #| customization |
   #|---------------|
-  stylix = {
-    enable = true;
-    image = ./wallpaper.jpg;
-    polarity = "dark";
-    base16Scheme = {
-      base00 = "11262c";
-      base01 = "183038";
-      base02 = "1e3a43";
-      base03 = "23434c";
-      base04 = "487b8c";
-      base05 = "a8bcba";
-      base06 = "cde2e0";
-      base07 = "cde2e0";
-      base08 = "d06058";
-      base09 = "e28c80";
-      base0A = "f09a8e";
-      base0B = "5e8c80";
-      base0C = "6ca4a2";
-      base0D = "588e9e";
-      base0E = "aa7382";
-      base0F = "be8695";
+  stylix.base16Scheme = {
+    base00 = "0f1722";
+    base01 = "16333c";
+    base02 = "1c4d4c";
+    base03 = "30394a";
+    base04 = "8f896b";
+    base05 = "e0dab6";
+    base06 = "eeeacc";
+    base07 = "fbf9ef";
+    base08 = "ab3a5b";
+    base09 = "d67527";
+    base0A = "d1ad38";
+    base0B = "25a397";
+    base0C = "42d6cd";
+    base0D = "4b8ba3";
+    base0E = "68308a";
+    base0F = "874618";
+  };
+  stylix.fonts = {
+    serif = {
+      package = pkgs.eb-garamond;
+      name = "EB Garamond";
     };
-    fonts = {
-      monospace = {
-        package = pkgs.ibm-plex;
-        name = "IBM Plex Mono";
-      };
-      sansSerif = {
-        package = pkgs.ibm-plex;
-        name = "IBM Plex Sans";
-      };
-      serif = {
-        package = pkgs.ibm-plex;
-        name = "IBM Plex Serif";
-      };
+    sansSerif = {
+      package = pkgs.eb-garamond;
+      name = "EB Garamond";
+    };
+    monospace = {
+      package = pkgs.eb-garamond;
+      name = "EB Garamond";
+    };
+    sizes = {
+      applications = 12;
+      terminal = 12;
+      desktop = 11;
+      popups = 11;
     };
   };
+  wayland.windowManager.sway = {
+    enable = true;
+    package = pkgs.swayfx;
+    extraConfig = ''
+      corner_radius 4
+      shadows enable
+      shadows_on_csd enable
+      shadow_blur_radius 20
+      shadow_color #000000C0
+      shadow_offset 0 2
+      default_border pixel 2
+      default_floating_border pixel 2
+      '';
+    };
+  }
 
   #|--------|
   #| script |
