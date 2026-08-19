@@ -44,7 +44,7 @@
     nvidia = {
       modesetting.enable = true;
       powerManagement.enable = true;
-      open = true;
+      open = true; # Set to false if using pre-Turing (GTX 10xx or older) GPUs
       nvidiaSettings = false;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
@@ -168,15 +168,22 @@
         enable = true;
         package = pkgs.swayfx;
         extraOptions = [ "--unsupported-gpu" ];
+        extraConfig = ''
+          corner_radius 4
+          shadows enable
+          shadows_on_csd enable
+          shadow_blur_radius 20
+          shadow_color #000000C0
+          shadow_offset 0 2
+          default_border pixel 2
+          default_floating_border pixel 2
+        '';
       };
       programs = {
-        # graphic shell
         fuzzel.enable = true;
         swaylock.enable = true;
-        # application
         mpv.enable = true;
         imv.enable = true;
-        # utility
         alacritty.enable = true;
         nushell.enable = true;
         zellij.enable = true;
@@ -198,16 +205,13 @@
         swayidle.enable = true;
       };
       home.packages = with pkgs; [
-        # graphic shell
         swaybg
         grim
         slurp
-        # application
         _64gram-desktop
         zen-browser
         rqbit
         mupdf
-        # utility
         playerctl
         brightnessctl
         pciutils
@@ -267,21 +271,6 @@
       popups = 11;
     };
   };
-  wayland.windowManager.sway = {
-    enable = true;
-    package = pkgs.swayfx;
-    extraConfig = ''
-      corner_radius 4
-      shadows enable
-      shadows_on_csd enable
-      shadow_blur_radius 20
-      shadow_color #000000C0
-      shadow_offset 0 2
-      default_border pixel 2
-      default_floating_border pixel 2
-      '';
-    };
-  }
 
   #|--------|
   #| script |
