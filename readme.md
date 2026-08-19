@@ -1,9 +1,9 @@
 <p align="center">
   <img src="wallpaper.png" width="100%">
 </p>
-<b align="center">
+<h2 align="center">
   installation
-</b>
+</h2>
   
 ```
 git clone https://github.com/s0mn1aq/stille.git
