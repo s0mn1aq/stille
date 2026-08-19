@@ -1,5 +1,5 @@
 <h2 align="center">
-  stille - nixos based system
+  stille
 </h2>
 <p align="center">
   <img src="wallpaper.png" width="100%">
