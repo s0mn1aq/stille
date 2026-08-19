@@ -155,6 +155,13 @@
     useUserPackages = true;
     users.stummer = { config, pkgs, ... }: {
       home.stateVersion = "26.05";
+      gtk = {
+        enable = true;
+        font = {
+          name = "EB Garamond";
+          size = 11;
+        };
+      };
       xdg.userDirs = {
         enable = true;
         createDirectories = true;
@@ -246,15 +253,15 @@
         executable = true;
       };
       xdg.dataFile."themes/Deepwoken/openbox-3/themerc".text = ''
-        window.active.border.color: #6b3244
+        window.active.border.color: #3b1a23
         window.active.title.bg.color: #1b292a
-        window.active.label.text.color: #cfc0a8
-        window.active.button.unpressed.image.color: #cfc0a8
+        window.active.label.text.color: #a69780
+        window.active.button.unpressed.image.color: #a69780
         window.active.shadow.color: #1b292aC0
         window.inactive.border.color: #395256
         window.inactive.title.bg.color: #1b292a
-        window.inactive.label.text.color: #5c7d82
-        window.inactive.button.unpressed.image.color: #5c7d82
+        window.inactive.label.text.color: #2c4549
+        window.inactive.button.unpressed.image.color: #2c4549
         window.inactive.shadow.color: #1b292a80
         border.width: 2
         padding.width: 4
@@ -262,15 +269,15 @@
         window.handle.width: 4
         menu.items.bg.color: #1b292a
         menu.items.text.color: #a69780
-        menu.items.active.bg.color: #4a2c4d
-        menu.items.active.text.color: #cfc0a8
+        menu.items.active.bg.color: #271928
+        menu.items.active.text.color: #a69780
         menu.title.bg.color: #271928
-        menu.title.text.color: #cfc0a8
+        menu.title.text.color: #a69780
         menu.border.color: #395256
         menu.border.width: 1
         osd.bg.color: #1b292a
         osd.border.color: #395256
-        osd.label.text.color: #cfc0a8
+        osd.label.text.color: #a69780
       '';
       programs = {
         fuzzel.enable = true;
@@ -325,36 +332,58 @@
   #|---------------|
   #| customization |
   #|---------------|
-  stylix.base16Scheme = {
-    base00 = "1b292a";
-    base01 = "271928";
-    base02 = "363636";
-    base03 = "395256";
-    base04 = "5c7d82";
-    base05 = "a69780";
-    base06 = "cfc0a8";
-    base07 = "e4d9c0";
-    base08 = "6b3244";
-    base09 = "5e311e";
-    base0A = "8c5a34";
-    base0B = "4d6b48";
-    base0C = "4a6d73";
-    base0D = "2c4549";
-    base0E = "4a2c4d";
-    base0F = "3b1a23";
-  };
-  stylix.fonts = {
-    serif = {
-      package = pkgs.eb-garamond;
-      name = "EB Garamond";
+  stylix = {
+    enable = true;
+    base16Scheme = {
+      base00 = "1b292a";
+      base01 = "2c4549";
+      base02 = "395256";
+      base03 = "271928";
+      base04 = "3b1a23";
+      base05 = "5e311e";
+      base06 = "a69780";
+      base07 = "363636";
+      base08 = "1b292a";
+      base09 = "2c4549";
+      base0A = "395256";
+      base0B = "271928";
+      base0C = "3b1a23";
+      base0D = "5e311e";
+      base0E = "a69780";
+      base0F = "363636";
     };
-    sansSerif = {
-      package = pkgs.eb-garamond;
-      name = "EB Garamond";
+    cursor = {
+      package = pkgs.phinger-cursors;
+      name = "phinger-cursors-dark";
+      size = 24;
     };
-    monospace = {
-      package = pkgs.courier-prime;
-      name = "Courier Prime";
+    fonts = {
+      fontconfig = {
+        enable = true;
+        defaultFonts = {
+          serif = [ "EB Garamond" ];
+          sansSerif = [ "EB Garamond" ];
+          monospace = [ "Courier Prime" ];
+        };
+      };
+      packages = with pkgs; [
+        eb-garamond
+        courier-prime
+      ];
+    };
+    fonts = {
+      serif = {
+        package = pkgs.eb-garamond;
+        name = "EB Garamond";
+      };
+      sansSerif = {
+        package = pkgs.eb-garamond;
+        name = "EB Garamond";
+      };
+      monospace = {
+        package = pkgs.courier-prime;
+        name = "Courier Prime";
+      };
     };
   };
 
