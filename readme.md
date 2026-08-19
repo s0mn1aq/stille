@@ -1,3 +1,4 @@
+stille - nixos based system
 <p align="center">
   <img src="wallpaper.png" width="100%">
 </p>
