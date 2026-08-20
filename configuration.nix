@@ -272,12 +272,11 @@
         osd.border.color: #c8ba9e
         osd.label.text.color: #c8ba9e
       '';
-      programs = {
-        fuzzel = {
+      programs.fuzzel = {
           enable = true;
           settings = {
             main = {
-              font = "EB Garamond:size=14";
+              font = lib.mkForce "EB Garamond:size=14"; # <-- Добавь lib.mkForce
               width = 40;
               lines = 10;
               horizontal-pad = 24;
