@@ -259,7 +259,7 @@
         window.inactive.label.text.color: #455a5c
         window.inactive.button.unpressed.image.color: #455a5c
         window.inactive.shadow.color: #141f2080
-        border.width: 2
+        border.width: 1
         padding.width: 5
         padding.height: 4
         window.handle.width: 2
