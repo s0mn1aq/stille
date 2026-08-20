@@ -330,7 +330,7 @@
         rage
         ffmpeg
         cpufetch
-        gpufetch
+        (gpufetch.override { cudaSupport = true; })
         onefetch
         wl-clipboard
         wlr-randr
