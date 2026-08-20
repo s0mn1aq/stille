@@ -276,7 +276,7 @@
           enable = true;
           settings = {
             main = {
-              font = lib.mkForce "EB Garamond:size=14"; # <-- Добавь lib.mkForce
+              font = lib.mkForce "EB Garamond:size=14";
               width = 40;
               lines = 10;
               horizontal-pad = 24;
