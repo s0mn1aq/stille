@@ -163,6 +163,9 @@
         pictures = "${config.home.homeDirectory}/picture";
         videos = "${config.home.homeDirectory}/video";
         music = "${config.home.homeDirectory}/audio";
+        desktop = null;
+        publicShare = null;
+        templates = null;
       };
       systemd.user.tmpfiles.rules = [
         "d %h/model 0755 - - -"
@@ -273,41 +276,40 @@
         osd.label.text.color: #c8ba9e
       '';
       programs.fuzzel = {
-          enable = true;
-          settings = {
-            main = {
-              font = lib.mkForce "EB Garamond:size=14";
-              width = 40;
-              lines = 10;
-              horizontal-pad = 24;
-              vertical-pad = 14;
-              inner-pad = 10;
-            };
-            border = {
-              width = 2;
-              radius = 4;
-            };
+        enable = true;
+        settings = {
+          main = {
+            font = lib.mkForce "EB Garamond:size=14";
+            width = 40;
+            lines = 10;
+            horizontal-pad = 24;
+            vertical-pad = 14;
+            inner-pad = 10;
+          };
+          border = {
+            width = 2;
+            radius = 4;
           };
         };
-        swaylock.enable = true;
-        mpv.enable = true;
-        imv.enable = true;
-        alacritty.enable = true;
-        nushell.enable = true;
-        zellij.enable = true;
-        helix.enable = true;
-        yazi.enable = true;
-        eza.enable = true;
-        bat.enable = true;
-        zoxide.enable = true;
-        git.enable = true;
-        gitui.enable = true;
-        skim.enable = true;
-        fd.enable = true;
-        ripgrep.enable = true;
-        btop.enable = true;
-        fastfetch.enable = true;
       };
+      programs.swaylock.enable = true;
+      programs.mpv.enable = true;
+      programs.imv.enable = true;
+      programs.alacritty.enable = true;
+      programs.nushell.enable = true;
+      programs.zellij.enable = true;
+      programs.helix.enable = true;
+      programs.yazi.enable = true;
+      programs.eza.enable = true;
+      programs.bat.enable = true;
+      programs.zoxide.enable = true;
+      programs.git.enable = true;
+      programs.gitui.enable = true;
+      programs.skim.enable = true;
+      programs.fd.enable = true;
+      programs.ripgrep.enable = true;
+      programs.btop.enable = true;
+      programs.fastfetch.enable = true;
       services = {
         mako.enable = true;
         swayidle.enable = true;
